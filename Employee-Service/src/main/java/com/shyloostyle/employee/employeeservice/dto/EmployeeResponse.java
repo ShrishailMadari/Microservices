@@ -1,6 +1,6 @@
 package com.shyloostyle.employee.employeeservice.dto;
 
-import lombok.*;
+import lombok.ToString;
 
 
 @ToString

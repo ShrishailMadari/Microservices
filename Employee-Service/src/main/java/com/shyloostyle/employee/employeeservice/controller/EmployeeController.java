@@ -3,13 +3,11 @@ package com.shyloostyle.employee.employeeservice.controller;
 import com.shyloostyle.employee.employeeservice.dto.EmployeeResponse;
 import com.shyloostyle.employee.employeeservice.model.Employee;
 import com.shyloostyle.employee.employeeservice.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
