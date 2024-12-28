@@ -7,6 +7,7 @@ import com.shyloostyle.employee.employeeservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +39,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeResponse createEmployee(Employee employee) {
         Employee saved = employeeRepository.save(employee);
         return convertToDto(saved);
+    }
+
+    @Override
+    public List<EmployeeResponse> getAllEmployees() {
+//        equals() can create the list of response or u can use streams
+        List<EmployeeResponse> employeeResponses = new ArrayList<>();
+        List<Employee> employeeList = employeeRepository.findAll();
+        return employeeList.stream()
+                .map(employee -> new EmployeeResponse(employee.getId(), employee.getName(), employee.getEmail(), employee.getBloodGroup()))
+                .toList();
+
     }
 }

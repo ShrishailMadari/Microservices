@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,6 +29,16 @@ public class EmployeeController {
         }
         return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
     }
+    @GetMapping("/All")
+    public ResponseEntity<List<EmployeeResponse>> getAllEmployees(){
+        List<EmployeeResponse> allEmployees = employeeService.getAllEmployees();
+        if (allEmployees != null){
+            return new ResponseEntity<>(allEmployees,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
     @PostMapping
     public ResponseEntity<EmployeeResponse> createEmployee(@RequestBody Employee employee){
         EmployeeResponse serviceEmployee = employeeService.createEmployee(employee);

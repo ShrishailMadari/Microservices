@@ -4,13 +4,22 @@ import lombok.*;
 
 
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class EmployeeResponse {
     private int id;
     private String name;
     private String email;
     private String bloodGroup;
+
+    public EmployeeResponse() {
+    }
+
+    public EmployeeResponse(int id, String name, String email, String bloodGroup) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.bloodGroup = bloodGroup;
+    }
 
     public int getId() {
         return id;
