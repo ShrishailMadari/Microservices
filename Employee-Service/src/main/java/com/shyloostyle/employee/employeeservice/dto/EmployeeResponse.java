@@ -4,7 +4,6 @@ import lombok.*;
 
 
 @ToString
-
 public class EmployeeResponse {
     private int id;
     private String name;

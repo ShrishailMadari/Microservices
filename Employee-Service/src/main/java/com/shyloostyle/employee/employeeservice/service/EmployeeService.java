@@ -12,4 +12,5 @@ public interface EmployeeService {
     EmployeeResponse getEmployeeById(Integer id);
     EmployeeResponse createEmployee(Employee employee);
     List<EmployeeResponse> getAllEmployees();
+    EmployeeResponse updateEmployeeById(Integer id, Employee employee);
 }

@@ -29,6 +29,7 @@ public class EmployeeController {
         }
         return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
     }
+
     @GetMapping("/All")
     public ResponseEntity<List<EmployeeResponse>> getAllEmployees(){
         List<EmployeeResponse> allEmployees = employeeService.getAllEmployees();
@@ -38,6 +39,14 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeResponse> updateEmployeeById(@PathVariable Integer id,@RequestBody Employee employee){
+        EmployeeResponse employeeResponse = employeeService.updateEmployeeById(id, employee);
+        if (employeeResponse != null) {
+            return new ResponseEntity<>(employeeResponse,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
     @PostMapping
     public ResponseEntity<EmployeeResponse> createEmployee(@RequestBody Employee employee){

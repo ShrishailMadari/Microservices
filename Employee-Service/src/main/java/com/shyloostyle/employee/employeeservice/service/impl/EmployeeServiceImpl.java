@@ -51,4 +51,16 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .toList();
 
     }
+
+    @Override
+    public EmployeeResponse updateEmployeeById(Integer id, Employee employee) {
+        //first find the Existing employee and then update
+        Employee existingEmployee = employeeRepository.findById(id).orElseThrow();
+        existingEmployee.setName(employee.getName());
+        existingEmployee.setEmail(employee.getEmail());
+        existingEmployee.setBloodGroup(employee.getBloodGroup());
+        //save the existing employee by updating it
+        Employee saved = employeeRepository.save(existingEmployee);
+        return convertToDto(saved);
+    }
 }
